@@ -13,10 +13,11 @@ public class Collect : MonoBehaviour
             other.tag = "Untagged";
             GameManager.Instance.bullets.Add(other.gameObject);
             other.transform.SetParent(parent);
-            other.gameObject.transform.position = GameManager.Instance.bullets[GameManager.Instance.bullets.Count - 1].transform.position + new Vector3(.6f, 0, .6f);
+            other.gameObject.transform.position = GameManager.Instance.bullets[GameManager.Instance.bullets.Count - 1].transform.position + GameManager.Instance.newPositionForBullet;
             other.gameObject.AddComponent<Collect>().parent = parent;
             EventManager.Instance.CollectBullet();
         }
+        
         else if (other.CompareTag("Wall"))
         {
             GameManager.Instance.bullets.Remove(gameObject);
