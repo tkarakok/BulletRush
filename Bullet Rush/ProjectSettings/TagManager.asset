@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Collect
+  - Wall
+  - Plus
   layers:
   - Default
   - TransparentFX
