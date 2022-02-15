@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Collect : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Collect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Collect"))
+        if (other.CompareTag("Collect") )
         {
             other.tag = "Untagged";
             GameManager.Instance.bullets.Add(other.gameObject);
@@ -27,6 +28,15 @@ public class Collect : MonoBehaviour
             {
                 Debug.Log("game over");
             }
+        }
+        else if (other.CompareTag("Magazine"))
+        {
+            gameObject.SetActive(false);
+        }
+        else if (other.CompareTag("Multiplier"))
+        {
+            other.transform.DORotate(new Vector3(-180,180,0),.2f);
+            gameObject.SetActive(false);
         }
     }
 
