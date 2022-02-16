@@ -10,7 +10,7 @@ public class BulletMovementController : Singleton<BulletMovementController>
     [SerializeField] private float _limitX = 2;
     [SerializeField] private float _xSpeed = 25;
     [SerializeField] private float _forwardSpeed = 2;
-    [SerializeField] private float _waveSpeed = .1f;
+    [SerializeField] private float _waveSpeed = .05f;
     [SerializeField] private float _waveScale = .1f;
     private float _lastTouchedX;
 

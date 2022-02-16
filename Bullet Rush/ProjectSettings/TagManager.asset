@@ -7,6 +7,9 @@ TagManager:
   - Collect
   - Wall
   - Plus
+  - Magazine
+  - Multiplier
+  - Slice
   layers:
   - Default
   - TransparentFX

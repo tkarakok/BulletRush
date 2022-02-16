@@ -10,10 +10,11 @@ public class GameManager : Singleton<GameManager>
     public List<GameObject> bullets;
     public Vector3 newPositionForBullet;
 
-
+    [HideInInspector]public int bulletCounter;
 
     public void StartFinish()
     {
+        bulletCounter = 1;
         StartCoroutine(Finish());
     }
 
