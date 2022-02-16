@@ -11,6 +11,7 @@ public class GameManager : Singleton<GameManager>
     public Vector3 newPositionForBullet;
 
     [HideInInspector]public int bulletCounter;
+    [HideInInspector]public int bonusMultiplier;
 
     public void StartFinish()
     {
@@ -27,6 +28,7 @@ public class GameManager : Singleton<GameManager>
             bullets[i].GetComponent<Rigidbody>().velocity = Vector3.forward * force;
             yield return new WaitForSeconds(.25f);
         }
+        
     }
 
 }

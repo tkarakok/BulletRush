@@ -37,7 +37,10 @@ public class Collect : MonoBehaviour
                 GameObject bullet = GameManager.Instance.bullets[GameManager.Instance.bullets.Count - 1];
                 GameManager.Instance.bullets.Remove(bullet);
             }
-
+            if (GameManager.Instance.bullets.Count == 0)
+            {
+                Debug.Log("Game Over");
+            }
         }
         else if (other.CompareTag("Wall"))
         {
@@ -52,6 +55,7 @@ public class Collect : MonoBehaviour
         }
         else if (other.CompareTag("Multiplier"))
         {
+            GameManager.Instance.bonusMultiplier = other.GetComponent<BonusMultiplier>().bonusMultiplier;
             other.transform.DORotate(new Vector3(-180,180,0),.2f);
             gameObject.SetActive(false);
         }
