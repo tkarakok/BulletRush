@@ -10,7 +10,7 @@ public class GetMultiplier : MonoBehaviour
         if (other.CompareTag("Multiplier"))
         {
             GameManager.Instance.bonusMultiplier = other.GetComponent<BonusMultiplier>().bonusMultiplier;
-            Debug.Log(GameManager.Instance.bonusMultiplier);
+            UIManager.Instance.EndGame();
             other.transform.DORotate(new Vector3(-180, 180, 0), .2f);
             gameObject.SetActive(false);
         }

@@ -33,7 +33,7 @@ public class Collect : MonoBehaviour
                 GameManager.Instance.bulletCounter--;
                 if (GameManager.Instance.bulletCounter == 0)
                 {
-                    Debug.Log("Game Over");
+                    UIManager.Instance.GameOver();
                 }
                 GameObject bullet = GameManager.Instance.bullets[i];
                 bullet.transform.SetParent(null);
@@ -53,7 +53,7 @@ public class Collect : MonoBehaviour
             GameManager.Instance.bulletCounter --;
             if (GameManager.Instance.bulletCounter == 0)
             {
-                Debug.Log("Game Over");
+                UIManager.Instance.GameOver();
             }
             gameObject.SetActive(false);
             gameObject.transform.SetParent(null);
@@ -61,18 +61,13 @@ public class Collect : MonoBehaviour
         }
         else if (other.CompareTag("Magazine"))
         {
-            if (!defaultBullet)
+            if (GameManager.Instance.finish)
             {
-                gameObject.SetActive(false);
-                gameObject.transform.SetParent(null);
-                for (int i = 0; i < transform.childCount; i++)
-                {
-                    if (transform.GetChild(i).gameObject.activeInHierarchy)
-                    {
-                        GameManager.Instance.bulletsInMagazine += (i + 1);
-                        GameManager.Instance.bulletCounter--;
-                    }
-                }
+                GetMagazineBonus();
+            }
+            else if (!defaultBullet && !GameManager.Instance.finish)
+            {
+                GetMagazineBonus();
             }
            
         }
@@ -92,4 +87,18 @@ public class Collect : MonoBehaviour
         }
     }
 
+    public void GetMagazineBonus()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).gameObject.activeInHierarchy)
+            {
+                GameManager.Instance.bulletsInMagazine += (i + 1);
+                GameManager.Instance.bulletCounter--;
+                UIManager.Instance.InGameCoinUpdate();
+            }
+        }
+        gameObject.SetActive(false);
+        gameObject.transform.SetParent(null);
+    }
 }

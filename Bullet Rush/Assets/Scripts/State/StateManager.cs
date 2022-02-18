@@ -19,7 +19,7 @@ public class StateManager : Singleton<StateManager>
 
     private void Start()
     {
-        state = State.InGame;
+        state = State.MainMenu;
     }
 
 }
