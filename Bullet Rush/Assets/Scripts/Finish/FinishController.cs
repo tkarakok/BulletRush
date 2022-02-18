@@ -16,6 +16,7 @@ public class FinishController : MonoBehaviour
             if (!GameManager.Instance.finish)
             {
                 GameManager.Instance.finish = true;
+                GameManager.Instance.confetti.SetActive(true);
             }
             other.transform.SetParent(null);
             other.transform.DOMove(magazine.transform.position, .25f).OnComplete(()=> other.gameObject.SetActive(false));

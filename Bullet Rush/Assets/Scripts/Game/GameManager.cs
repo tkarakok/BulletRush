@@ -10,6 +10,7 @@ public class GameManager : Singleton<GameManager>
     public Transform firePoint;
     public List<GameObject> bullets;
     public Vector3 newPositionForBullet;
+    public GameObject confetti;
 
     [HideInInspector]public int bulletCounter; // onPlayer
     [HideInInspector]public bool finish; // onPlayer
