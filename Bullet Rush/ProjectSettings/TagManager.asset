@@ -10,6 +10,7 @@ TagManager:
   - Magazine
   - Multiplier
   - Slice
+  - Converter
   layers:
   - Default
   - TransparentFX

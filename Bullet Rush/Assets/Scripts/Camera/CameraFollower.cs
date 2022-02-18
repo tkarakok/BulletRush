@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CameraFollower : MonoBehaviour
 {
@@ -15,7 +16,15 @@ public class CameraFollower : MonoBehaviour
 
     private void LateUpdate()
     {
-        Vector3 targetPosition = _target.position + _offset;
-        transform.position = targetPosition;
+        if (StateManager.Instance.state == State.InGame)
+        {
+            Vector3 targetPosition = _target.position + _offset;
+            transform.position = targetPosition;
+        }
+        else if (StateManager.Instance.state == State.EndGame)
+        {
+            _target = null;
+            gameObject.transform.DOMoveX(0, .5f);
+        }
     }
 }

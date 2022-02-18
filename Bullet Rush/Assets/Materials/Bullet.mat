@@ -9,8 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Bullet
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 2
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -73,6 +73,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0.009047508, a: 1}
-    - _EmissionColor: {r: 0.5, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.8396226, g: 0.39962795, b: 0.35248306, a: 1}
+    - _EmissionColor: {r: 0.4341537, g: 0.3967553, b: 0.16202943, a: 1}
   m_BuildTextureStacks: []
