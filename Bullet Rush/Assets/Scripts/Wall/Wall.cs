@@ -5,6 +5,7 @@ using DG.Tweening;
 public class Wall : MonoBehaviour
 {
     public bool moveable = false;
+    public bool human = false;
     public float duration;
     public Vector3 targerPosition;
 
@@ -24,9 +25,27 @@ public class Wall : MonoBehaviour
     {
         while (true)
         {
-            transform.DOMove(targerPosition,duration).OnComplete(()=> transform.DOMove(_firstPosition,duration));
+            if (human)
+            {
+                GetComponent<Animator>().SetBool("Idle", false);
+                GetComponent<Animator>().SetBool("Walk", true);
+                HumanMovement();
+            }
+            else
+            {
+                transform.DOMove(targerPosition, duration).OnComplete(() => transform.DOMove(_firstPosition, duration));
+            }
             yield return new WaitForSeconds(duration * 2);
         }
     }
+
+    void HumanMovement()
+    {
+        transform.DOMove(targerPosition, duration).OnComplete(() => GetComponent<Animator>().SetBool("Walk",false));
+
+    }
+
+
+
 
 }

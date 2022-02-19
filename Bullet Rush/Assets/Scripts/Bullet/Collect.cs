@@ -47,9 +47,13 @@ public class Collect : MonoBehaviour
             }
 
         }
-        else if (other.CompareTag("Wall"))
+        else if (other.CompareTag("Wall") || other.CompareTag("Human"))
         {
-
+            if (other.CompareTag("Human"))
+            {
+                other.tag = "Untagged";
+                other.GetComponent<Animator>().SetBool("Dead",true);
+            }
             GameManager.Instance.bulletCounter --;
             if (GameManager.Instance.bulletCounter == 0)
             {

@@ -29,12 +29,14 @@ public class EventManager : Singleton<EventManager>
         InGame += () => StateManager.Instance.state = State.InGame;
         InGame += UIManager.Instance.InGameCoinUpdate;
         InGame += UIManager.Instance.InGameLevelUpdate;
+        InGame += () => AudioManager.Instance.gameMusicAudioSource.enabled = true;
 
         // gameover 
         GameOver += () => StateManager.Instance.state = State.GameOver;
 
         // end game
         EndGame += () => StateManager.Instance.state = State.EndGame;
+        EndGame += () => AudioManager.Instance.PlaySound(AudioManager.Instance.finishClip);
         EndGame += UIManager.Instance.EndGameTotalCoinTextUpdate;
         EndGame += UIManager.Instance.EndGameMagazineTextUpdate;
         EndGame += UIManager.Instance.EndGameMultiplierTextUpdate;

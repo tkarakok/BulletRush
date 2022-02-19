@@ -11,6 +11,7 @@ TagManager:
   - Multiplier
   - Slice
   - Converter
+  - Human
   layers:
   - Default
   - TransparentFX

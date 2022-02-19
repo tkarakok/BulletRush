@@ -20,7 +20,7 @@ public class FinishController : MonoBehaviour
             }
             other.transform.SetParent(null);
             other.transform.DOMove(magazine.transform.position, .25f).OnComplete(()=> other.gameObject.SetActive(false));
-            
+            AudioManager.Instance.PlaySound(AudioManager.Instance.confettiClip);
             if (BulletMovementController.Instance.transform.childCount == 0)
             {
                 StateManager.Instance.state = State.EndGame;

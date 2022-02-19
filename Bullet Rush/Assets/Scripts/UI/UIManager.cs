@@ -42,6 +42,7 @@ public class UIManager : Singleton<UIManager>
     private void Start()
     {
         _currentPanel = mainMenuPanel;
+
     }
 
     public void GameOver()
@@ -106,24 +107,25 @@ public class UIManager : Singleton<UIManager>
     {
         EventManager.Instance.InGame();
         PanelChange(inGamePanel);
-
+        AudioManager.Instance.PlaySound(AudioManager.Instance.uiClickClip);
     }
     public void SettingsPanelVolume()
     {
         if (volume.value <= .5f)
         {
-            // ses kapalý
+            AudioManager.Instance.AudioController();
             volumeHandle.GetComponent<Image>().color = Color.red;
         }
         else
         {
-            // ses açýk
+            AudioManager.Instance.AudioController();
             volumeHandle.GetComponent<Image>().color = Color.green;
         }
     }
     public void SettingsButton()
     {
         settingsPanel.SetActive(true);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.uiClickClip);
     }
     public void BackToMenu()
     {
@@ -132,11 +134,12 @@ public class UIManager : Singleton<UIManager>
     public void RestartButton()
     {
         LevelManager.Instance.ChangeLevel("LEVEL " + LevelManager.Instance.CurrentLevel);
-        //AudioManager.Instance.PlaySound(AudioManager.Instance.uiClickClip);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.uiClickClip);
     }
     public void NextLevelButton()
     {
         LevelManager.Instance.ChangeLevel("LEVEL " + LevelManager.Instance.GetLevelName());
+        AudioManager.Instance.PlaySound(AudioManager.Instance.uiClickClip);
 
     }
     public void EndGameClaimButton()
