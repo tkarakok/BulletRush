@@ -21,6 +21,7 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
+        
         finish = false;
         _maxDistance = finishLine.transform.position.z - BulletMovementController.Instance.transform.position.z;
         bulletCounter = 0;

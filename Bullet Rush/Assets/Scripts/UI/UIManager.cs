@@ -16,9 +16,11 @@ public class UIManager : Singleton<UIManager>
     [Header("Settings")]
     public Scrollbar volume;
     public GameObject volumeHandle;
+    
     [Header("Main Menu")]
     public Text mainMenuTotalCoinText;
     public Text mainMenuLevelText;
+    public Animator animator;
     [Header("In Game")]
     public Text inGameCoinText;
     public Text inGameCurrentLevelText;
@@ -49,12 +51,15 @@ public class UIManager : Singleton<UIManager>
     {
         PanelChange(gameOverPanel);
         EventManager.Instance.GameOver();
+        AdManager.Instance.InterstitialAdShow();
+        AudioManager.Instance.PlaySound(AudioManager.Instance.gameOverClip);
     }
     public void EndGame()
     {
         PanelChange(endGamePanel);
         EventManager.Instance.EndGame();
     }
+
     #region Panel
     public void PanelChange(GameObject openPanel)
     {
@@ -125,11 +130,13 @@ public class UIManager : Singleton<UIManager>
     public void SettingsButton()
     {
         settingsPanel.SetActive(true);
+        animator.SetBool("Settings",true);
         AudioManager.Instance.PlaySound(AudioManager.Instance.uiClickClip);
     }
     public void BackToMenu()
     {
         settingsPanel.SetActive(false);
+        animator.SetBool("Settings", false);
     }
     public void RestartButton()
     {
@@ -153,7 +160,6 @@ public class UIManager : Singleton<UIManager>
         endGameNextLevelButton.SetActive(true);
     }
     #endregion
-
 
     #region ClaimButtonSpriteAnim
     IEnumerator ClaimCoinAnimation()

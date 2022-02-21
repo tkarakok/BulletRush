@@ -13,6 +13,7 @@ public class GetMultiplier : MonoBehaviour
             UIManager.Instance.EndGame();
             other.transform.DORotate(new Vector3(-180, 180, 0), .2f);
             gameObject.SetActive(false);
+            AdManager.Instance.InterstitialAdShow();
         }
     }
 }

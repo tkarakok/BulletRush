@@ -7,7 +7,7 @@ public class AudioManager : Singleton<AudioManager>
 {
     
     public AudioSource sfxAudioSource,gameMusicAudioSource;
-    public AudioClip inGameMusic, collectClip, finishClip, uiClickClip, confettiClip;
+    public AudioClip inGameMusic, collectClip, finishClip, uiClickClip, confettiClip,gameOverClip,obstacleClip;
     
 
     bool _muted = false;

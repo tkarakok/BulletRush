@@ -25,6 +25,7 @@ public class Collect : MonoBehaviour
         else if (other.CompareTag("Slice") && gameObject.transform.parent != null)
         {
             other.tag = "Untagged";
+            AudioManager.Instance.PlaySound(AudioManager.Instance.obstacleClip);
             other.transform.parent.GetChild(1).gameObject.SetActive(false);
             int index = GameManager.Instance.bullets.IndexOf(gameObject);
             int a = GameManager.Instance.bullets.Count - index;
@@ -54,6 +55,7 @@ public class Collect : MonoBehaviour
                 other.tag = "Untagged";
                 other.GetComponent<Animator>().SetBool("Dead",true);
             }
+            AudioManager.Instance.PlaySound(AudioManager.Instance.obstacleClip);
             GameManager.Instance.bulletCounter --;
             if (GameManager.Instance.bulletCounter == 0)
             {

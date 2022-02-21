@@ -21,6 +21,7 @@ public class AdManager : Singleton<AdManager>
     {
 
         RequestBanner();
+        
         RequestInterstitialAd();
         RequestRewardedAd();
     }
@@ -98,8 +99,8 @@ public class AdManager : Singleton<AdManager>
     {
         string type = args.Type;
         double amount = 250;
-
-        
+        PlayerPrefs.SetInt("Coin",(int)amount);
+        UIManager.Instance.MainMenuUIUpdate();
     }
     #endregion
 
