@@ -25,8 +25,17 @@ public class Collect : MonoBehaviour
         else if (other.CompareTag("Slice") && gameObject.transform.parent != null)
         {
             other.tag = "Untagged";
+            if (other.transform.parent.GetComponent<Wall>().human)
+            {
+                other.tag = "Untagged";
+                other.transform.parent.GetComponent<Animator>().SetBool("Dead", true);
+            }
+            else
+            {
+                other.transform.parent.GetChild(1).gameObject.SetActive(false);
+            }
             AudioManager.Instance.PlaySound(AudioManager.Instance.obstacleClip);
-            other.transform.parent.GetChild(1).gameObject.SetActive(false);
+            
             int index = GameManager.Instance.bullets.IndexOf(gameObject);
             int a = GameManager.Instance.bullets.Count - index;
             for (int i = index; i < GameManager.Instance.bullets.Count; i++)
@@ -48,9 +57,9 @@ public class Collect : MonoBehaviour
             }
 
         }
-        else if (other.CompareTag("Wall") || other.CompareTag("Human"))
+        else if (other.CompareTag("Wall"))
         {
-            if (other.CompareTag("Human"))
+            if (other.transform.parent.GetComponent<Wall>().human)
             {
                 other.tag = "Untagged";
                 other.GetComponent<Animator>().SetBool("Dead",true);
