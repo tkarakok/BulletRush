@@ -4,9 +4,9 @@ using GoogleMobileAds.Api;
 
 public class AdManager : Singleton<AdManager>
 {
-    public string bannerId;
-    public string interstitialId;
-    public string rewardedAdId;
+    private string bannerId = "ca-app-pub-5516298993040743/4257166983";
+    private string interstitialId = "ca-app-pub-5516298993040743/3214396675";
+    private string rewardedAdId = "ca-app-pub-5516298993040743/3283174271";
 
     private InterstitialAd _interstitialAd;
     private BannerView _bannerView;

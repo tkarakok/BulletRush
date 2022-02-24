@@ -41,7 +41,7 @@ public class Collect : MonoBehaviour
             for (int i = index; i < GameManager.Instance.bullets.Count; i++)
             {
                 GameManager.Instance.bulletCounter--;
-                if (GameManager.Instance.bulletCounter == 0)
+                if (GameManager.Instance.bulletCounter <= 0)
                 {
                     UIManager.Instance.GameOver();
                 }
@@ -53,6 +53,8 @@ public class Collect : MonoBehaviour
             {
                 GameObject bullet = GameManager.Instance.bullets[GameManager.Instance.bullets.Count - 1];
                 GameManager.Instance.bullets.Remove(bullet);
+                BulletMovementController.Instance.KillObject(bullet);
+                
 
             }
 
@@ -66,11 +68,11 @@ public class Collect : MonoBehaviour
             }
             AudioManager.Instance.PlaySound(AudioManager.Instance.obstacleClip);
             GameManager.Instance.bulletCounter --;
-            if (GameManager.Instance.bulletCounter == 0)
+            if (GameManager.Instance.bulletCounter <= 0)
             {
                 UIManager.Instance.GameOver();
             }
-            gameObject.SetActive(false);
+            StartCoroutine(BulletMovementController.Instance.SetActiveFalse(gameObject)); 
             gameObject.transform.SetParent(null);
             GameManager.Instance.bullets.Remove(gameObject);
         }
@@ -88,11 +90,13 @@ public class Collect : MonoBehaviour
         }
         else if (other.CompareTag("Converter"))
         {
-            transform.GetChild(_level).gameObject.SetActive(false);
-            _level++;
-            transform.GetChild(_level).gameObject.SetActive(true);
-
-
+            if (_level < 3)
+            {
+                transform.GetChild(_level).gameObject.SetActive(false);
+                _level++;
+                transform.GetChild(_level).gameObject.SetActive(true);
+            }
+            
         }
         else if (other.CompareTag("Multiplier"))
         {

@@ -12,6 +12,7 @@ TagManager:
   - Slice
   - Converter
   - Human
+  - Parent
   layers:
   - Default
   - TransparentFX

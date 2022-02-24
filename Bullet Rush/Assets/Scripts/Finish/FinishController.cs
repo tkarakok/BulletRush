@@ -8,10 +8,17 @@ public class FinishController : MonoBehaviour
     
     public Transform magazine;
     public Transform robot;
-    
+
+    private GameObject _parent;
+
+    private void Start()
+    {
+        _parent = GameObject.FindWithTag("Parent");
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        if (other.transform.parent == _parent.transform)
         {
             if (!GameManager.Instance.finish)
             {

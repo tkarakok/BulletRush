@@ -51,6 +51,8 @@ MonoBehaviour:
   finishClip: {fileID: 8300000, guid: 8c0c704475d5a4c8a9b133236afe4945, type: 3}
   uiClickClip: {fileID: 8300000, guid: 2bab1f33802c740ae8534297d2deaa49, type: 3}
   confettiClip: {fileID: 8300000, guid: 90dde74cc1377404d8fb09b3e1019804, type: 3}
+  gameOverClip: {fileID: 0}
+  obstacleClip: {fileID: 0}
 --- !u!82 &3810543622288590273
 AudioSource:
   m_ObjectHideFlags: 0
@@ -190,9 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3481a2d15e030a459cbf5b05a56cec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bannerId: 
-  interstitialId: 
-  rewardedAdId: 
+  bannerId: ca-app-pub-5516298993040743/4257166983
+  interstitialId: ca-app-pub-5516298993040743/3214396675
+  rewardedAdId: ca-app-pub-5516298993040743/3283174271
 --- !u!1 &6500184442592649988
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,10 +419,12 @@ MonoBehaviour:
   inGamePanel: {fileID: 0}
   gameOverPanel: {fileID: 0}
   endGamePanel: {fileID: 0}
+  rateUsPanel: {fileID: 0}
   volume: {fileID: 0}
   volumeHandle: {fileID: 0}
   mainMenuTotalCoinText: {fileID: 0}
   mainMenuLevelText: {fileID: 0}
+  animator: {fileID: 0}
   inGameCoinText: {fileID: 0}
   inGameCurrentLevelText: {fileID: 0}
   levelProgressBar: {fileID: 0}

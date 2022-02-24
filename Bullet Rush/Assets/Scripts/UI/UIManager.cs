@@ -13,10 +13,12 @@ public class UIManager : Singleton<UIManager>
     public GameObject inGamePanel;
     public GameObject gameOverPanel;
     public GameObject endGamePanel;
+    public GameObject rateUsPanel;
     [Header("Settings")]
     public Scrollbar volume;
     public GameObject volumeHandle;
-    
+    [Header("Rate Us")]
+    private string _packageName = "com.avenpigame.BulletRunning";
     [Header("Main Menu")]
     public Text mainMenuTotalCoinText;
     public Text mainMenuLevelText;
@@ -44,7 +46,13 @@ public class UIManager : Singleton<UIManager>
     private void Start()
     {
         _currentPanel = mainMenuPanel;
-
+        if (LevelManager.Instance.CurrentLevel %3 == 0)
+        {
+            if (PlayerPrefs.GetInt("Rate") == 0)
+            {
+                rateUsPanel.SetActive(true);
+            }
+        }
     }
 
     public void GameOver()
@@ -171,6 +179,23 @@ public class UIManager : Singleton<UIManager>
             yield return new WaitForSeconds(.1f);
             EndGameTotalCoinTextUpdate();
         }
+    }
+    #endregion
+
+    #region Rate Us
+    public void YesButton()
+    {
+        Application.OpenURL("market://details?id=" + _packageName);
+        PlayerPrefs.SetInt("Rate", 1);
+    }
+    public void NoButton()
+    {
+        PlayerPrefs.SetInt("Rate", 1);
+        rateUsPanel.SetActive(false);
+    }
+    public void LaterButton()
+    {
+        rateUsPanel.SetActive(false);
     }
     #endregion
 }

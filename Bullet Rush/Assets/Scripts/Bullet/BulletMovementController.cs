@@ -8,11 +8,12 @@ public class BulletMovementController : Singleton<BulletMovementController>
 {
     
     [SerializeField] private float _limitX = 2;
-    [SerializeField] private float _xSpeed = 25;
+    private float _xSpeed = 10;
     [SerializeField] private float _forwardSpeed = 2;
     [SerializeField] private float _waveSpeed = .05f;
     [SerializeField] private float _waveScale = .1f;
     private float _lastTouchedX;
+    Sequence sequence;
 
     // Update is called once per frame
     void Update()
@@ -56,6 +57,29 @@ public class BulletMovementController : Singleton<BulletMovementController>
 
     }
 
+    #region Kill
+    public void KillObject(GameObject killObject)
+    {
+        DOTween.Kill(killObject);
+        StartCoroutine(WaitAndAlign(killObject));
+    }
+    IEnumerator WaitAndAlign(GameObject bullet)
+    {
+        yield return new WaitForSeconds(.25f);
+        sequence = DOTween.Sequence();
+
+        sequence.Append(bullet.transform.DOMove(new Vector3(bullet.transform.position.x + Random.Range(-.5f,.5f) + Random.Range(-1f,1f),bullet.transform.position.y, bullet.transform.position.z + Random.Range(1,2.5f)), .5f).
+            SetEase(Ease.Flash));
+        Destroy(bullet.GetComponent<Collect>());
+        StartCoroutine(SetActiveFalse(bullet));
+    }
+    public IEnumerator SetActiveFalse(GameObject gameObject)
+    {
+        gameObject.transform.GetChild(3).gameObject.SetActive(true);
+        yield return new WaitForSeconds(.2f);
+        gameObject.SetActive(false);
+    }
+    #endregion
 
     #region Wave
 
