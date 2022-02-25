@@ -2115,7 +2115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500184442697886104, guid: 9601f5bf22d61dc479eaffcf0e70dd10, type: 3}
       propertyPath: force
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6500184442697886104, guid: 9601f5bf22d61dc479eaffcf0e70dd10, type: 3}
       propertyPath: confetti

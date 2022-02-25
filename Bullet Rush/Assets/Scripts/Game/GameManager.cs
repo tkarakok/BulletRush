@@ -5,12 +5,13 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     
-    public float force;
     public GameObject finishLine;
     public Transform firePoint;
     public List<GameObject> bullets;
     public Vector3 newPositionForBullet;
     public GameObject confetti;
+    
+    private float _force = 6;
 
     [HideInInspector]public int bulletCounter; // onPlayer
     [HideInInspector]public bool finish; // onPlayer
@@ -52,7 +53,7 @@ public class GameManager : Singleton<GameManager>
             {
                 bullets[i].AddComponent<GetMultiplier>();
             }
-            bullets[i].GetComponent<Rigidbody>().velocity = Vector3.forward * force;
+            bullets[i].GetComponent<Rigidbody>().velocity = Vector3.forward * _force;
             yield return new WaitForSeconds(.25f);
         }
         
