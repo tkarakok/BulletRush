@@ -1,2 +1,24 @@
-# BulletRush
- New hyper casual project for Avenpi Game
+
+# BULLET RUSH
+
+NEW PROJECT FOR AVENPI GAME
+
+
+
+## GAMEPLAY VIDEO
+
+
+[![IMAGE ALT TEXT HERE](https://i.imgur.com/O8Ph6iU.png)](https://youtu.be/q4zY7-ckTww)
+
+
+
+
+## WHAT I USE IN THE PROJECT
+
+**ENGINE:** UNITY 3D
+
+**LANGUAGE:** C#
+
+**ASSETS:** UNITY ASSET STORE
+
+  
